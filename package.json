@@ -6,7 +6,8 @@
     "app:build": "rimraf ./dist && tsc",
     "app:start": "node --watch dist/server.js",
     "app:dev": "rimraf ./dist && tsc && ts-node-dev ./src/server.ts",
-    "app:test": "jest --config jest.config.js"
+    "app:test": "jest --config jest.config.js",
+    "migration:create": "typeorm migration:create src/database/migrations/Migration-$(date +%Y%m%d%H%M%S)"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,11 @@
   "description": "",
   "dependencies": {
     "@types/express": "^5.0.2",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.24"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
