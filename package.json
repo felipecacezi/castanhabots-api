@@ -5,9 +5,10 @@
   "scripts": {
     "app:build": "rimraf ./dist && tsc",
     "app:start": "node --watch dist/server.js",
-    "app:dev": "rimraf ./dist && tsc && ts-node-dev ./src/server.ts",
+    "app:dev": "rimraf ./dist && ts-node-dev --respawn --transpile-only ./src/server.ts",
     "app:test": "jest --config jest.config.js",
-    "migration:create": "typeorm migration:create src/database/migrations/Migration-$(date +%Y%m%d%H%M%S)"
+    "migration:create": "typeorm migration:create src/database/migrations/Migration-$(date +%Y%m%d%H%M%S)",
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/config/data-source.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,8 @@
     "pg": "^8.16.0",
     "reflect-metadata": "^0.2.2",
     "sqlite3": "^5.1.7",
-    "typeorm": "^0.3.24"
+    "typeorm": "^0.3.24",
+    "zod": "^3.25.58"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
