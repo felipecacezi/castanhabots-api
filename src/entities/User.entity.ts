@@ -25,4 +25,7 @@ export class User {
 
   @UpdateDateColumn({ name: 'onUpdated' })
   onUpdated!: Date;
+
+  @Column()
+  active!: number
 }
