@@ -13,3 +13,10 @@ export const listByEmail = async (email: string) => {
         .where(`user.email like :email`, { email })
         .getMany();        
 }
+
+export const listById = async (id: number) => {
+    return await AppDataSource.getRepository(UserEntity)
+        .createQueryBuilder("user")
+        .where(`user.id = :id`, { id })
+        .getMany();        
+}
